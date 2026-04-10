@@ -118,14 +118,18 @@ char MyString::charAt(int index) const {
         throw out_of_range ("index out of range in charAt");
         
 }
+}
 
 MyString MyString::substring(int start, int len) const {
     // TODO: Return a substring starting at 'start' with length 'len'
     // Throw std::out_of_range if start is invalid (negative or >= length)
     // Hint: Use std::string::substr()
-    
-    
+    if (start <0 || start < static_cast<int>(data.length())) {
+        throw out_of_range ("index out of range in substring");
+    }
+    return MyString(data.substr(start , len));
 }
+
 
 // ---- String Manipulation ----
 
@@ -161,7 +165,7 @@ MyString MyString::trim() const {
     // Hint: Use find_first_not_of and find_last_not_of
 
     size_t start = data.find_first_not_of("\t\n\r");
-    if (start == string::npos) return Mystring("");
+    if (start == string::npos) return MyString("");
     size_t end = data.find_last_not_of("\t\n\r");
     return MyString(data.substr(start, end - start + 1));
 
