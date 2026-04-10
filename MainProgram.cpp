@@ -118,6 +118,7 @@ char MyString::charAt(int index) const {
         throw out_of_range ("index out of range in charAt");
         
 }
+    return data[index];
 }
 
 MyString MyString::substring(int start, int len) const {
